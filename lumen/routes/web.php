@@ -1,4 +1,8 @@
 <?php
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\User;
 
 /*
@@ -34,3 +38,4 @@ $router->get('/user/{id}',['middleware'=>'auth','uses'=>'UserController@find']);
 $router->group(['prefix'=>'dashboard','middleware'=>'auth'], function() use ($router){
 	$router->get('','DashboardController@index');
 });
+

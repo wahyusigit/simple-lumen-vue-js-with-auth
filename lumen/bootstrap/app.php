@@ -63,6 +63,10 @@ $app->singleton(
 //    App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
+$app->middleware([
+    \Barryvdh\Cors\HandleCors::class,
+]);
+
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
 ]);
@@ -77,6 +81,7 @@ $app->routeMiddleware([
 | totally optional, so you are not required to uncomment this line.
 |
 */
+$app->configure('cors');
 
 $app->register(App\Providers\AppServiceProvider::class);
 $app->register(App\Providers\AuthServiceProvider::class);
@@ -85,6 +90,7 @@ $app->register(App\Providers\AuthServiceProvider::class);
 
 // Add this line --  JWT AUTH .WS
 $app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
+$app->register(Barryvdh\Cors\ServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

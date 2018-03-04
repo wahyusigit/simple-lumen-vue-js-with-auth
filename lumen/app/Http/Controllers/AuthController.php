@@ -63,10 +63,10 @@ class AuthController extends Controller
     }
 
     public function register(Request $req){
-        $this->validate($req, [
-            'username'  =>  'required|unique:users',
-            'email'     =>  'required|email|unique:users'
-        ]);
+        // $this->validate($req, [
+        //     'username'  =>  'required|unique:users',
+        //     'email'     =>  'required|email|unique:users'
+        // ]);
 
         $username = $req->input('username');
         $email = $req->input('email');
@@ -104,5 +104,9 @@ class AuthController extends Controller
                 'message'=>'Tidak berhasil logout',
             ]);   
         }
+    }
+
+    public function testAll(){
+        return response()->json(User::orderBy('created_at','desc')->take(5)->get());
     }
 }
