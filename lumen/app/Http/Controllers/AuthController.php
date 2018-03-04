@@ -22,6 +22,11 @@ class AuthController extends Controller
     }
 
     public function login(Request $req){
+        $this->validate($req, [
+            'username'  =>  'required|unique:users',
+            'email'     =>  'required|email|unique:users'
+        ]);
+        
         $username = $req->input('username');
         $email = $req->input('email');
         $password = $req->input('password');
@@ -63,10 +68,10 @@ class AuthController extends Controller
     }
 
     public function register(Request $req){
-        // $this->validate($req, [
-        //     'username'  =>  'required|unique:users',
-        //     'email'     =>  'required|email|unique:users'
-        // ]);
+        $this->validate($req, [
+            'username'  =>  'required|unique:users',
+            'email'     =>  'required|email|unique:users'
+        ]);
 
         $username = $req->input('username');
         $email = $req->input('email');
