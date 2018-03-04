@@ -33,8 +33,6 @@
 </template>
 
 <script>
-
-
 export default{
   data(){    
     return{
@@ -68,16 +66,30 @@ export default{
     }
   },
   methods:{
-    onRegister(formName){
-      this.$refs[formName].validate((valid) => {
+    onRegister(form){
+      this.$refs[form].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          this.$http.post('register', this.register).then(
+            function(response){
+              if(response.body.status == 'success'){
+                this.$message({ message: response.body.message, type: response.body.status })
+                return this.$router.push('login')
+              } else {
+                return this.$message.error(response.body.message)
+              }
+            },
+            function(response){
+              if(response.body.status == 'error'){
+                return this.$message.error(response.body.message)
+              } else {
+                
+              }
+            }
+          )
         } else {
-          console.log('error submit!!')
           return false
         }
       })
-      
     },
     validatePassword(rule, value, callback){
       if (value === '') {
