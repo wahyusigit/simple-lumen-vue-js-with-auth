@@ -89,7 +89,6 @@ class AuthController extends Controller
                 ], 422);
         }
 
-
         $username = $req->input('username');
         $email = $req->input('email');
         $password = app('hash')->make($req->input('password'));
