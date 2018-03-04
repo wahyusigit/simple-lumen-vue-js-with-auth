@@ -4,6 +4,13 @@ import Vue from 'vue'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+import VueResource from 'vue-resource'
+
+// Use and Setting Vue Resource
+Vue.use(VueResource)
+Vue.http.options.root = 'http://lumen2.test';
+
+// Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
 
 // Partial Pages
 import NavigationWS from '@/components/partials/Navigation'
@@ -156,6 +163,8 @@ Vue.prototype.$message = Message;
 
 
 Vue.config.productionTip = false
+
+// Vue.http.options.emulateJSON = true
 
 /* eslint-disable no-new */
 new Vue({
