@@ -47,7 +47,7 @@ class AuthController extends Controller
                 'status'    =>  'error',
                 'message'   =>  'Email tidak terdaftar',
                 'token'     =>  false,
-                ]);
+                ], 400);
         } else {
             if (app('hash')->check($password, $user->password)) {
                 $token = Auth::attempt($req->only('email','password'));
@@ -56,15 +56,14 @@ class AuthController extends Controller
                     'message'   =>  'Berhasil masuk',
                     'token'     =>  true,
                     'token'   =>  $token,
-                    ]);
+                    ], 200);
             } else {
                 return response()->json([
                         'status'    =>  'error',
                         'message'   =>  'Password salah',
                         'token'     =>  false,
-                    ]);
+                    ], 400);
             }
-            
         }
     }
 
@@ -102,12 +101,12 @@ class AuthController extends Controller
             return response()->json([
                 'status'=>'success',
                 'message'=>'Pendaftaran berhasil'
-                ]);
+                ], 200);
         } else {
             return response()->json([
                 'status'=>'error',
                 'message'=>'Pendaftaran tidak berhasil'
-                ]);
+                ], 400);
         }
     }
 
@@ -117,12 +116,12 @@ class AuthController extends Controller
             return response()->json([
                 'status'=>'success',
                 'message'=>'Berhasil logout',
-            ]);    
+            ], 200);    
         } else {
             return response()->json([
                 'status'=>'error',
                 'message'=>'Tidak berhasil logout',
-            ]);   
+            ], 500);   
         }
     }
 
