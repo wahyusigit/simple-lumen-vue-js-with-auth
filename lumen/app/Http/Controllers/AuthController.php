@@ -25,11 +25,10 @@ class AuthController extends Controller
 
     public function login(Request $req){
         $this->validate($req, [
-            'username'  =>  'required|unique:users',
-            'email'     =>  'required|email|unique:users'
+            'email'     =>  'required|email',
+            'password'  =>  'required',
         ]);
         
-        $username = $req->input('username');
         $email = $req->input('email');
         $password = $req->input('password');
 
