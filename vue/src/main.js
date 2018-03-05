@@ -5,12 +5,17 @@ import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
 import VueResource from 'vue-resource'
+import VueLocalStorage from 'vue-localstorage'
+
+Vue.use(VueLocalStorage, {
+  name: 'ls',
+  bind: true //created computed members from your variable declarations
+})
 
 // Use and Setting Vue Resource
 Vue.use(VueResource)
 Vue.http.options.root = 'http://lumen2.test';
-
-// Vue.http.headers.common['Authorization'] = 'Basic YXBpOnBhc3N3b3Jk';
+import auth from './resource/index'
 
 // Partial Pages
 import NavigationWS from '@/components/partials/Navigation'
@@ -164,7 +169,7 @@ Vue.prototype.$message = Message;
 
 Vue.config.productionTip = false
 
-// Vue.http.options.emulateJSON = true
+Vue.http.options.emulateJSON = true
 
 /* eslint-disable no-new */
 new Vue({
@@ -174,3 +179,4 @@ new Vue({
   template: '<App/>',
   render: h => h(App)
 })
+

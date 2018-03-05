@@ -14,8 +14,11 @@
     "cors": "^2.8.4",
     "element-ui": "^2.2.1",
     "vue": "^2.5.2",
+    "vue-localstorage": "^0.6.1",
     "vue-resource": "^1.5.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

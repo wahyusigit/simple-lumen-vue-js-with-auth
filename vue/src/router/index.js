@@ -4,8 +4,9 @@ import LandingIndex from '@/components/pages/landing/Index'
 import Login from '@/components/pages/landing/Login'
 import Register from '@/components/pages/landing/Register'
 
+
 // User
-import UserIndex from '@/components/pages/user/Index'
+import Dashboard from '@/components/pages/user/Dashboard'
 
 Vue.use(Router)
 
@@ -27,9 +28,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/user',
-      name: 'UserIndex',
-      component: UserIndex
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
     }
   ]
 })

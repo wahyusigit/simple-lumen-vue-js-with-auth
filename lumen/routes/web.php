@@ -36,6 +36,6 @@ $router->post('/test','AuthController@test');
 $router->get('/user/{id}',['middleware'=>'auth','uses'=>'UserController@find']);
 
 $router->group(['prefix'=>'dashboard','middleware'=>'auth'], function() use ($router){
-	$router->get('','DashboardController@index');
+	$router->get('/','DashboardController@index');
 });
 
